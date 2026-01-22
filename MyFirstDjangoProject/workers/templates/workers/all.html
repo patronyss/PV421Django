@@ -1,0 +1,12 @@
+{% extends 'main/base.html' %}
+
+{% block title %} Всі робітники {% endblock %}
+
+{% block content %}
+    <h1> Всі робітники: </h1>
+
+    {% for worker in workers %}
+        <h2>{{worker.name}}: {{worker.salary}} $</h2>
+    {% endfor %}
+
+{% endblock %}
