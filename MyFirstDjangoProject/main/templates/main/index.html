@@ -1,8 +1,18 @@
 {% extends 'main/base.html' %}
+{% load static %}
 
 {% block title %} Головна {% endblock %}
 
+{% block extra_css %}
+    <link rel="stylesheet" href="{% static 'main/css/index.css' %}">
+{% endblock %}
+
 {% block content %}
     <h1>Головна сторінка</h1>
-    <h2>Скоро тут з'явиться нова інформація :)</h2>
+    <h2>Твоє передбачування: {{prediction}}</h2>
+
+    <div class="auth-buttons">
+        <a href="#">Увійти</a>
+        <a href="#">Реєстрація</a>
+    </div>
 {% endblock %}

@@ -1,10 +1,30 @@
+from django.views.generic import TemplateView
 from django.shortcuts import render
 
-# Create your views here.
-def index_view(request):
-    context = {
-        'greetings': 'Ласкаво просимо! Ми раді, що ви тут!',
-        'numbers': range(1, 11)
-    }
+from random import choice
 
-    return render(request, 'main/index.html', context)
+
+# Create your views here.
+class IndexView(TemplateView):
+    template_name = 'main/index.html'
+    predictions = [
+        "Найближчим часом з’явиться новий інтерес, пов’язаний з навчанням або розвитком навичок",
+        "Одна зі старих ідей отримає друге життя і почне реально працювати",
+        "З’явиться можливість навчити когось тому, що раніше здавалося очевидним",
+        "Рутина почне дратувати сильніше, що підштовхне до змін",
+        "Буде невеликий, але помітний прогрес у фізичній формі",
+        "З’явиться інструмент або технологія, яка значно спростить повсякденні задачі",
+        "Одна розмова змінить погляд на знайому ситуацію",
+        "Зросте впевненість у власних рішеннях без потреби постійного підтвердження",
+        "З’явиться бажання структурувати хаос — списки, плани, системи",
+        "Маленький успіх дасть сильніший поштовх, ніж великий результат",
+        "Час почне цінуватися більше, ніж раніше",
+        "Одна звичка зникне сама собою, без примусу"
+    ]
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)  # отримуємо базовий контекст
+
+        context['prediction'] = choice(self.predictions)
+
+        return context
