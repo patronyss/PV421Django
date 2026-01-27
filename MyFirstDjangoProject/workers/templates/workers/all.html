@@ -1,4 +1,9 @@
 {% extends 'main/base.html' %}
+{% load static %}
+
+{% block extra_css %}
+    <link rel="stylesheet" href="{% static 'workers/css/all.css' %}">
+{% endblock %}
 
 {% block title %} Всі робітники {% endblock %}
 
@@ -7,9 +12,11 @@
 
     {% for worker in workers %}
         <h2>{{worker.name}}: {{worker.salary}} $</h2>
-        <a href="#">Детальніше</a>
-        <a href="#">Редагувати</a>
-        <a href="#">Видалити</a>
+        <div class="worker-buttons">
+            <a class="btn details" href="#">Детальніше</a>
+            <a class="btn edit" href="#">Редагувати</a>
+            <a class="btn delete" href="#">Видалити</a>
+        </div>
     {% endfor %}
 
 {% endblock %}
