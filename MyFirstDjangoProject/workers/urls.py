@@ -1,7 +1,12 @@
 from django.urls import path, include
-from workers.views import WorkerListView
+from workers.views import WorkerListView, WorkerDetailView, WorkerCreateView, WorkerDeleteView
 
 
 urlpatterns = [
     path('all/', WorkerListView.as_view(), name='workers_list'),
-]  # domen/workers/....
+
+    path('<int:pk>/', WorkerDetailView.as_view(), name='worker_detail'),
+    path('<int:pk>/delete/', WorkerDeleteView.as_view(), name='worker_delete'),
+
+    path('create/', WorkerCreateView.as_view(), name='worker_create'),
+]  # domen/workers/

@@ -8,14 +8,17 @@
 {% block title %} Всі робітники {% endblock %}
 
 {% block content %}
+    <div class="worker-buttons">
+        <a class="btn create" href="{% url 'worker_create' %}">Створити робітника</a>
+    </div>
     <h1> Всі робітники: </h1>
 
     {% for worker in workers %}
         <h2>{{worker.name}}: {{worker.salary}} $</h2>
         <div class="worker-buttons">
-            <a class="btn details" href="#">Детальніше</a>
+            <a class="btn details" href="{% url 'worker_detail' worker.id %}">Детальніше</a>
             <a class="btn edit" href="#">Редагувати</a>
-            <a class="btn delete" href="#">Видалити</a>
+            <a class="btn delete" href="{% url 'worker_delete' worker.id %}">Видалити</a>
         </div>
     {% endfor %}
 

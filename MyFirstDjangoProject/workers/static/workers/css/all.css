@@ -84,3 +84,13 @@
 .worker-buttons .delete:hover {
     box-shadow: 0 7px 16px rgba(239, 68, 68, 0.6);
 }
+
+.create {
+    background: linear-gradient(135deg, #00ff92, #00ff2b);
+    box-shadow: 0 4px 10px rgba(239, 68, 68, 0.45);
+}
+
+.create:hover {
+    background: linear-gradient(135deg, #79f043, #3ea60f);
+    box-shadow: 0 4px 10px rgba(239, 68, 68, 0.45);
+}

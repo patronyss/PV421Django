@@ -1,0 +1,14 @@
+{% extends 'main/base.html' %}
+
+{% block title %} Робітник {{worker.id}} {% endblock %}
+
+{% block content %}
+    <h1>Інформація про робітника: <br> {{worker.name}}</h1>
+    <h2>Зарплата: {{worker.salary}} $</h2>
+
+    {% if worker.note %}
+        <h2>Додаткова інфомація: {{worker.note}}</h2>
+    {% else %}
+        <h2>Додаткової інфомації немає</h2>
+    {% endif %}
+{% endblock %}
