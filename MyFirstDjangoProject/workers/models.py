@@ -8,3 +8,18 @@ class Worker(models.Model):
 
     def __str__(self):
         return f'Worker({self.id}) {self.name}: {self.salary} $'
+
+
+class Resume(models.Model):
+    worker = models.OneToOneField(Worker, on_delete=models.CASCADE)  # при видаленні Worker, зникне його Resume
+    date_created = models.DateField(auto_now_add=True)
+    description = models.TextField()
+
+    def __str__(self):
+        return f'Резюме {self.worker.name}'
+
+
+class Contact(models.Model):
+    worker = models.ForeignKey(Worker, on_delete=models.CASCADE, related_name='contacts')
+
+

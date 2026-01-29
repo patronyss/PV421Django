@@ -1,0 +1,16 @@
+{% extends 'main/base.html' %}
+{% load static %}
+
+{% block extra_css %}
+    <link rel="stylesheet" href="{% static 'workers/css/resume-create.css' %}">
+{% endblock %}
+
+{% block title %} Резюме {{worker.name}} {% endblock %}
+
+{% block content %}
+    <form method="post">
+        {% csrf_token %}
+        {{form.as_p}}
+        <button type="submit">Створити</button>
+    </form>
+{% endblock %}

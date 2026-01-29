@@ -1,6 +1,11 @@
 {% extends 'main/base.html' %}
+{% load static %}
 
 {% block title %} Робітник {{worker.id}} {% endblock %}
+
+{% block extra_css %}
+    <link rel="stylesheet" href="{% static 'workers/css/worker-detail.css' %}">
+{% endblock %}
 
 {% block content %}
     <h1>Інформація про робітника: <br> {{worker.name}}</h1>
@@ -11,4 +16,13 @@
     {% else %}
         <h2>Додаткової інфомації немає</h2>
     {% endif %}
+
+    {% if worker.resume %}
+        <h1>Резюме ({{worker.resume.date_created}})</h1>
+        <h2>{{worker.resume.description}}</h2>
+    {% else %}
+        <h1>Резюме немає</h1>
+        <a class="create-resume-btn" href="{% url 'resume_create' worker.id %}">Створити резюме</a>
+    {% endif %}
+
 {% endblock %}
